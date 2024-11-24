@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Chamados</title>
+    <style>
+        /* Estilos básicos para o dashboard */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+        .navbar {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .chamado-card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .chamado-card h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #4CAF50;
+        }
+        .chamado-card p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .details-button {
+            display: inline-block;
+            padding: 10px 15px;
+            color: #fff;
+            background-color: #4CAF50;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+        .details-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Dashboard de Chamados - Equipes de Coleta</h1>
+    </div>
+
+    <div class="container">
+        {% for chamado in dados %}
+        <div class="chamado-card">
+            <h3>Chamado #{{ chamado.id }} - {{ chamado.solicitacao.tipo_material }}</h3>
+            <p><strong>Solicitante:</strong> {{ chamado.solicitacao.nome_solicitante }}</p>
+            <p><strong>Equipe Designada:</strong> {{ chamado.equipe }}</p>
+            <p><strong>Status:</strong>{{ chamado.status }}</p>
+            <!-- Link para detalhes do chamado -->
+            <a href="{% url 'detalhe_task' chamado.id %}" class="details-button">Ver Detalhes</a>
+        </div>
+        {% empty %}
+        <p>Nenhum chamado alocado.</p>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

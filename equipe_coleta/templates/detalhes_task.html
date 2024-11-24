@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Chamado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #2c3e50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .img-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .img-container img {
+            max-width: 100px;
+            border-radius: 8px;
+        }
+        a {
+            text-decoration: none;
+            color: #5cb85c;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+        .dropdown-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+            background-color: #fff;
+        }
+
+        option {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Detalhes da Task</h1>
+    </div>
+
+    <div class="container">
+        <h2>Informações do Task</h2>
+        
+        <p><strong>Tipo de Material:</strong> {{ chamado.solicitacao.tipo_material }}</p>
+        <p><strong>Nome do Solicitante:</strong> {{ chamado.solicitacao.nome_solicitante }}</p>
+        <p><strong>CPF:</strong> {{ chamado.solicitacao.cpf_solicitante }}</p>
+        <p><strong>Número de Contato:</strong> {{ chamado.solicitacao.numero_contato }}</p>
+        <p><strong>Endereço:</strong> {{ chamado.solicitacao.endereco }}</p>
+        <p><strong>Time responsavel:</strong> {{ chamado.equipe }}</p>
+        <h3>Imagens da Coleta:</h3>
+        <div class="img-container">
+            
+            <img src="{{ chamado.solicitacao.foto_coleta.url }}" alt="Imagem da Coleta">
+           
+        </div>
+        
+        <form action="{% url 'mudar_status' id=chamado.id %}" method="POST">
+            {% csrf_token %}
+            <label for="status">Status da task:</label>
+            <select id="status" name="status" required>
+                <option value="">CRIADA</option>
+                <option value="EM ANDAMENTO">EM ANDAMENTO</option>
+                <option value="INCOMPLETO">INCOMPLETO</option>
+                <option value="SUCESSO">SUCESSO</option>
+                <option value="FALHA">FALHA</option>
+            </select>
+            <button type="submit">Mudar Status</button>
+    
+        </form>
+        
+        <a href="{% url 'exibir_tasks' %}">Voltar à Lista de Tasks</a>
+        
+
+</body>
+</html>
