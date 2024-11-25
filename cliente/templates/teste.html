@@ -1,0 +1,88 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRIDE</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: hotpink;
+        margin: 20px;
+        color: #fff;
+      }
+      h1 {
+        font-size: 1.5rem;
+        text-align: left;
+        margin-bottom: 30px;
+        padding: 10px;
+        background-color: hotpink;
+        color: rgb(243, 239, 241);
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h1 a {
+        text-decoration: none; /* Remove sublinhado */
+        color: #fff; /* Define a cor do texto */
+      }
+
+      h1 a:hover {
+        color: #424141; /* Cor alternativa ao passar o mouse */
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+        width: calc(33.333% - 20px);
+        box-sizing: border-box;
+        text-decoration: none;
+        color: #333;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+      }
+      .card h3 {
+        margin: 0 0 10px;
+        font-size: 18px;
+        color: #444;
+      }
+      .card p {
+        font-size: 14px;
+        color: hotpink;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>
+      <a href="{% url 'servicos' %}">Coleta Fixa</a>
+    </h1>
+
+    <div class="container">
+      {% for pev in pev %}
+        <a
+          class="card"
+          href="https://www.google.com/maps?q=Avenida+Jornalista+Umberto+Calderaro,+Adrianópolis"
+          target="_blank"
+        >
+          <h3>{{ pev.nome }}</h3>
+          <p>
+           {{ pev.rua }}, {{ pev.bairro }} - {{ pev.cep }}
+          </p>
+        </a>
+      {% endfor %}  
+    </div>
+  </body>
+</html>

@@ -127,10 +127,10 @@
 
 
         {% if chamado.status == 'SUCESSO' or chamado.status == 'FALHA' %}
-            <form action="" method="POST">
+            <form action="{% url 'fechar_task' id=chamado.id %}" method="POST">
                 {% csrf_token %}
                 <label for="status">O chamado foi finalizado. O que deseja fazer?</label>
-                <select id="statu" name="status" required>
+                <select id="status" name="status" required>
                     <option value="">{{ chamado.status }}</option>
                     <option value="FECHADO">FECHADO</option>
                     <option value="EM ANDAMENTO">EM ANDAMENTO</option>
@@ -154,7 +154,7 @@
                 <p><strong>O chamado já está sendo executado pela:</strong>{{ chamado.equipe }}</p>
         {% elif chamado.status == 'INCOMPLETO' %}
                 <p><strong>Há informações incompletas na task e ela não pode ser executada</strong></p>
-                <p>Aj</p>
+    
         {% endif %}
 
         <a href="{% url 'solicitacao' %}">Voltar à Lista de Chamados</a>

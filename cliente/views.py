@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Solicitacao, Endereco
 from atendente.models import Resgate, PontosColeta
+
+def home(request):
+    return render(request, 'index.html')
+
 def form(request):
     if request.method == 'GET':
         return render(request, 'form.html')
@@ -22,13 +26,17 @@ def form(request):
                                                  cpf_solicitante = cpf, numero_contato = numero_contato,
                                                  email_solicitante = email, endereco = endereco, foto_coleta = foto, status = 'CRIADA'
                                                  )
-        resgate = Resgate.objects.create(descarte = solicitacao, tipo_cesta = 'a',
-                                        quantidade = 1, cpf = solicitacao.cpf_solicitante, 
-                                        nome = solicitacao.nome_solicitante, status = 'CRIADA')
         return render(request, 'sucesso.html')
 
 
 def pontos_coleta(request):
     if request.method == 'GET':
         pev = PontosColeta.objects.all()
-        return render(request, 'pontos_coleta.html', {'pev': pev})
+        return render(request, 'teste.html', {'pev': pev})
+
+def about(request):
+    return render(request, 'about.html')
+
+
+def servicos(request):
+    return render(request, 'services.html')

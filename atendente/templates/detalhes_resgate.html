@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Resgate</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .navbar {
+            background-color: #2c3e50;
+            padding: 10px;
+            color: white;
+            text-align: center;
+        }
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            
+        }
+        h2 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .img-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .img-container img {
+            max-width: 100px;
+            border-radius: 8px;
+        }
+        a {
+            text-decoration: none;
+            color: #5cb85c;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+
+
+        .dropdown-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+        }
+
+        label {
+            font-size: 1rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            color: #555;
+            transition: all 0.3s ease;
+        }
+
+        select:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+            background-color: #fff;
+        }
+
+        option {
+            color: #555;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="navbar">
+        <h1>Detalhes</h1>
+    </div>
+
+    <div class="container">
+        <h2>Informações do Resgate</h2>
+        
+        <p><strong>Nome:</strong> {{ resgate.nome }}</p>
+        <p><strong>CPF:</strong> {{  resgate.cpf }}</p>
+        <p><strong>Tipo de Cesta:</strong> {{ resgate.tipo_cesta }}</p>
+        <p><strong>Quantidade:</strong> {{ resgate.quantidade }}</p>
+        <p><strong>Disponivel a partir de:</strong> {{ resgate.data_disponivel }}</p>
+        <p><strong>Status:</strong> {{ resgate.status }}</p>
+
+
+        <a href="{% url 'exibir_resgate' %}">Voltar à Lista de Resgates</a>
+    </div>
+
+</body>
+</html>

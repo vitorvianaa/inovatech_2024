@@ -19,12 +19,11 @@ def cadastrar_descarte(request):
         descarte = Descarte.objects.create(
             material = dados['tipo_material'], porte_coleta = dados['porte_coleta'],
             cpf = dados['cpf_solicitante'], nome = dados['nome_solicitante'],
-            email = dados['email_solicitante'], status = True
+            email = dados['email_solicitante'], status = 'CRIADA'
         )
-        resgate = Resgate.objects.create(
-            descarte = descarte, tipo_cesta = cesta,
-            quantidade = 1, cpf = descarte.cpf, nome = descarte.nome, status = True
-        )
+        resgate = Resgate.objects.create(tipo_cesta = 'GRANDE', quantidade = 2, cpf = dados['cpf_solicitante'], nome = dados['nome_solicitante'], 
+                                         status = 'CRIADA'
+                                         )
         return render(request, 'sucesso_descarte.html', {'dados': descarte.email})
     elif request.method == 'GET':
         return render(request, 'cadastrar_descarte.html')
@@ -55,4 +54,26 @@ def alocar_aquipe(request, id):
     objeto.save()
     return render(request, 'sucesso_atendente.html')
 
+def fechar_task(request, id):
+    if request.method == 'POST':
+        dados = request.POST
+        obj = get_object_or_404(Solicitacao, id = id)
+        obj.status = dados['status']
+        obj.save()
+        resgate = Resgate.objects.create(tipo_cesta = 'GRANDE', quantidade = 2, cpf = obj.cpf_solicitante, nome = obj.nome_solicitante, 
+                                         status = 'CRIADA'
+                                         )
+        return render(request, 'sucesso_atendente.html')
 
+def exibir_resgate(request):
+    if request.method == 'GET':
+        status = request.GET.get('status', '')
+        if status:
+            resgates = Resgate.objects.filter(status = status)
+        else:
+            resgates = Resgate.objects.all()
+        return render(request, 'resgates.html', {'resgate': resgates})
+
+def detalhes_resgate(request, id):
+        resgate = get_object_or_404(Resgate, id = id)
+        return render(request, 'detalhes_resgate.html', {'resgate': resgate})

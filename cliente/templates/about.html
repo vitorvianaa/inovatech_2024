@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRIDE</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+  </head>
+  <body>
+    <header>
+      <h2 class="logo">
+        <img src="{% static 'image/logoo.PNG'%}" alt="logo" width="80px" />
+      </h2>
+
+      <nav class="navigation">
+        <a href="{% url 'home' %}">Home</a>
+
+        <a href="{% url 'sobre' %}">Sobre</a>
+        <a href="{% url 'servicos' %}">Serviços</a>
+        <a href="./contatos.html">Contato</a>
+      </nav>
+    </header>
+    <main>
+      <section>
+        <div class="container1">
+          <h2>Sobre</h2>
+          <p>
+            PRIDE (Plataforma de Recolhimento Ideal de Resíduos Estadual), uma
+            aplicação digital direcionada para o gerenciamento exemplar da
+            coleta de resíduos urbanos. Criada com o objetivo de fazer o
+            recolhimento de lixo de forma simples e concreta a fim de contribuir
+            para a sustentabilidade das cidades e consequentemente no
+            desenvolvimento delas, visando a melhoria das cidades em relação a
+            coleta de residuos recicláveis e comuns.
+          </p>
+        </div>
+      </section>
+    </main>
+    <div class="img">
+      <img src="{% static 'image/logoo.PNG'%}" alt="logo" width="400px" />
+    </div>
+  </body>
+</html>

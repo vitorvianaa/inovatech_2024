@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import ChamadoColeta
 from django.http import HttpResponse
 from cliente.models import Solicitacao
@@ -22,4 +22,4 @@ def mudar_status(request, id):
         atualizado = ChamadoColeta.objects.filter(id = id).update(status = status)
         solicitacao = ChamadoColeta.objects.get(id = id)
         solicitacao_att = Solicitacao.objects.filter(id = solicitacao.solicitacao.id).update(status = status)
-        return HttpResponse({'ok':'ok'})
+        return redirect('exibir_tasks')

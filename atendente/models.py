@@ -7,18 +7,18 @@ class Descarte(models.Model):
     cpf = models.CharField(max_length=255)
     nome = models.CharField(max_length=255)
     email = models.EmailField()
-    status = models.BooleanField() #True == Valido || False == Invalido
+    status = models.CharField(max_length=100) #True == Valido || False == Invalido
 
     def __str__(self):
         return f'Id Resgate - {self.id}'
 
 class Resgate(models.Model):
-    descarte = models.ForeignKey(Descarte, on_delete=models.CASCADE)
+    #descarte = models.ForeignKey(Descarte, on_delete=models.CASCADE)
     tipo_cesta = models.CharField(max_length=255) # Pequeno = Econômica, Medio = Completa, Grande = Premium
     quantidade = models.IntegerField()
     cpf = models.CharField(max_length=255)
     nome = models.CharField(max_length=255)
-    status = models.BooleanField() 
+    status = models.CharField(max_length=100) 
     # quando criado : status == True -> posso resgatar
     # depois de resgatado: status == False -> não posso resgatar
     data_disponivel = models.DateField(auto_now_add=True) # dia que o descarte ficou disponivel

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRIDE</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <header>
+      <h2 class="logo">
+        <img src="img/logoo.PNG" alt="logo" width="80px" />
+      </h2>
+
+      <nav class="navigation">
+        <a href="./index.html">Home</a>
+        <a href="./about.html">Sobre</a>
+        <a href="./services.html">Serviços</a>
+        <a href="./contatos.html">Contato</a>
+      </nav>
+    </header>
+
+    <div class="wrapper">
+      <div class="form-box login">
+        <form action="#">
+          <h1>Login</h1>
+          <div class="input-box">
+            <input type="text" placeholder="Usuário" required />
+            <i class="bx bxs-user"></i>
+          </div>
+
+          <div class="input-box">
+            <input type="password" placeholder="Senha" required />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+          <div class="remember-forgot">
+            <label><input type="checkbox" />Lembre-se</label>
+            <a href="#">Esqueceu sua senha? </a>
+          </div>
+
+          <button type="submit" class="btn">Login</button>
+
+          <div class="register-link">
+            <p>
+              Novo por aqui? <a href="#" class="register-link">Cadastre-se</a>
+            </p>
+          </div>
+        </form>
+      </div>
+
+      <div class="form-box cadastro">
+        <form action="#">
+          <h2>Cadastro</h2>
+          <div class="input-box">
+            <input type="text" placeholder="Nome" required />
+            <i class="bx bxs-user"></i>
+          </div>
+
+          <div class="input-box">
+            <input type="tel" placeholder="Tefone" required />
+            <i class="bx bxs-phone"></i>
+          </div>
+
+          <div class="input-box">
+            <input type="email" placeholder="Email" required />
+            <i class="bx bx-envelope"></i>
+          </div>
+
+          <div class="input-box">
+            <input type="password" placeholder="Senha" required />
+            <i class="bx bxs-lock-alt"></i>
+          </div>
+
+          <div class="remember-forgot">
+            <label><input type="checkbox" />Aceite os Termos & Condições</label>
+          </div>
+
+          <button type="submit" class="btn">Cadastre-se</button>
+
+          <div class="register-link">
+            <p>Possui uma conta? <a href="#" class="login-link">Login</a></p>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

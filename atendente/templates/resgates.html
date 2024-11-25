@@ -13,7 +13,7 @@
             padding: 0;
         }
         .navbar {
-            background-color:hotpink;
+            background-color: hotpink;
             padding: 10px;
             color: white;
             text-align: center;
@@ -72,7 +72,7 @@
             background-color: #f9f9f9;
         }
         .view-details {
-            background-color:hotpink;
+            background-color: hotpink;
             color: white;
             padding: 8px 12px;
             text-decoration: none;
@@ -83,12 +83,11 @@
         .view-details:hover {
             background-color: #4cae4c;
         }
-        /* Estilo geral do header */
-        header {
+      /* Estilo geral do header */
+      header {
             background-color: #2c3e50; /* Cor de fundo do menu */
             padding: 10px 0; /* Espaçamento superior e inferior */
         }
-
         /* Estilo da navegação */
         .navigation {
             display: flex; /* Alinha os itens na horizontal */
@@ -115,7 +114,6 @@
             background-color: #34495e; /* Cor de fundo ao passar o mouse */
             color: #ffffff; /* Cor do texto ao passar o mouse */
         }
-
     </style>
 </head>
 <body>
@@ -129,9 +127,8 @@
         </nav>
       </header>
 
-
     <div class="navbar">
-        <h1>Lista de Chamados</h1>
+        <h1>Lista de Resgate</h1>
     </div>
 
     <div class="container">
@@ -142,9 +139,7 @@
                 <select name="status" id="status">
                     <option value="">Todos</option>
                     <option value="CRIADA" {% if request.GET.status == "CRIADA" %}selected{% endif %}>Criada</option>
-                    <option value="EM ANDAMENTO" {% if request.GET.status == "EM ANDAMENTO" %}selected{% endif %}>Em Andamento</option>
-                    <option value="SUCESSO" {% if request.GET.status == "SUCESSO" %}selected{% endif %}>Sucesso</option>
-                    <option value="FALHA" {% if request.GET.status == "FALHA" %}selected{% endif %}>Falha</option>
+                    <option value="EXPIRADA" {% if request.GET.status == "EXPIRADA" %}selected{% endif %}>Expirada</option>
                 </select>
                 <button type="submit">Aplicar Filtro</button>
             </form>
@@ -153,27 +148,31 @@
         <table>
             <thead>
                 <tr>
-                    <th>Tipo de Material</th>
-                    <th>Nome do Solicitante</th>
+                    <th>Nome</th>
                     <th>CPF</th>
-                    <th>Número de Contato</th>
-                    <th>Endereço</th>
-                    <th>Ações</th>
+                    <th>Tipo de Cesta</th>
+                    <th>Quantidade</th>
+                    <th>Disponivel a partir de</th>
                     <th>Status</th>
+                    <th></th>
+
                 </tr>
             </thead>
             <tbody>
-                {% for chamado in dados %}
+                {% for resgate in resgate %}
                 <tr>
-                    <td>{{ chamado.tipo_material }}</td>
-                    <td>{{ chamado.nome_solicitante }}</td>
-                    <td>{{ chamado.cpf_solicitante }}</td>
-                    <td>{{ chamado.numero_contato }}</td>
-                    <td>{{ chamado.endereco }}</td>
+                    <td>{{ resgate.nome }}</td>
+                    <td>{{ resgate.cpf }}</td>
+                    <td>{{ resgate.tipo_cesta }}</td>
+                    <td>{{ resgate.quantidade }}</td>
+                    <td>{{ resgate.data_disponivel }}</td>
+                    <td>{{ resgate.status }}</td>
                     <td>
-                        <a href="{% url 'detalhes_chamado' chamado.id %}" class="view-details">Ver Detalhes</a>
+                        {% if resgate.status == 'CRIADA' %}
+                        <a href="{% url 'detalhes_resgate' id=resgate.id %}" class="view-details">Realizar Resgate</a>
+                        {% endif %}
                     </td>
-                    <td>{{ chamado.status }}</td>
+
                 </tr>
                 {% endfor %}
             </tbody>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PRIDE</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: hotpink;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      /* Ajuste para o texto que estava sobrepondo a navbar */
+      .intro-text {
+        text-align: center;
+        margin-top: 100px; /* Distância maior para não sobrepor a navbar */
+        margin-bottom: 0px;
+        color: #fff;
+        height: 50px;
+      }
+
+      .intro-text h1 {
+        font-size: 2em;
+        height: 0px;
+        margin: -25px;
+      }
+
+      .intro-text p {
+        font-size: 1.2em;
+        margin-top: 70px;
+        height: 0px;
+      }
+
+      /* Conteúdo Principal */
+      .contact-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 15px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 600px;
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .contact-form label {
+        font-size: 1em;
+        margin-bottom: 2px;
+
+        color: hotpink;
+      }
+      .contact-container ::placeholder {
+        color: hotpink;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid hotpink;
+        border-radius: 15px;
+        font-size: 1em;
+        color: hotpink;
+      }
+
+      .contact-form textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+
+      .contact-form button {
+        padding: 12px;
+        background-color: hotpink;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.1em;
+        cursor: pointer;
+      }
+
+      .contact-form button:hover {
+        background-color: hotpink;
+      }
+
+      footer {
+        margin-top: 30px;
+        text-align: center;
+        color: #777;
+      }
+
+      footer p {
+        font-size: 0.9em;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header>
+      <h2 class="logo">
+        <img src="img/logoo.PNG" alt="logo" width="80px" />
+      </h2>
+      <nav class="navigation">
+        <a href="./index.html">Home</a>
+        <a href="./about.html">About</a>
+        <a href="./services.html">Services</a>
+        <a href="./contatos.html">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Texto de Introdução -->
+    <section class="intro-text">
+      <h1>Entre em Contato</h1>
+      <p>Preencha o formulário abaixo para enviar sua mensagem</p>
+    </section>
+
+    <!-- Formulário -->
+    <section class="contact-container">
+      <form
+        class="contact-form"
+        action="https://formspree.io/f/xanybbeb"
+        method="POST"
+      >
+        <label for="name">Nome</label>
+        <input type="text" id="name" name="name" placeholder="nome" required />
+
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="email"
+          required
+        />
+
+        <label for="message">Mensagem</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Sua mensagem"
+          required
+        ></textarea>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; 2024 PRIDE. Todos os direitos reservados.</p>
+    </footer>
+  </body>
+</html>
